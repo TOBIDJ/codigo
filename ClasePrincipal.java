@@ -1,13 +1,12 @@
-package hola_mundo;
+package banderasHello;
+
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,10 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import java.awt.GridLayout;
-import java.awt.FlowLayout;
-import java.awt.BorderLayout;
 import javax.imageio.ImageIO;
 
 
@@ -30,8 +26,12 @@ class Hola_mundo extends JFrame{
    
     
     
-    //se instancian botones
-      JButton ingb = new JButton (new ImageIcon("1.jpg"));
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//se instancian botones
+      JButton ingb = new JButton ();      
       JButton rusb = new JButton ();
       JButton aleb = new JButton ();
       JButton japb = new JButton ();
@@ -42,7 +42,7 @@ class Hola_mundo extends JFrame{
  	
 
 
- ventana.setSize(800,600);
+ ventana.setSize(800,300);
  ventana.setTitle("HOLA MUNDO EN 5 IDIOMAS");
  ventana.setLocation(100,200);
  ventana.setLocationRelativeTo(null);
@@ -59,11 +59,10 @@ class Hola_mundo extends JFrame{
  
   public void iniciarComponentes(){
       JPanel p = new JPanel(); 
-      p.setBounds(0,0,800,600); 
+      p.setLayout(new GridLayout(1, 1));
+      p.setBounds(0,0,800,300); 
       p.setBackground(Color.yellow);  
-      //se instancian iconos
-      
-      
+
       //se instancian etiquetas
       JLabel etiqueta = new JLabel();
       JLabel img = new JLabel ();
@@ -77,36 +76,78 @@ class Hola_mundo extends JFrame{
       //etiqueta.setBackground(Color.GREEN);
       etiqueta.setFont(new Font ("arial",Font.PLAIN,15));
       
-      
+       
      
 
       
    
         
-    ingb.setBounds(50,300,100,100);
+    
     //ing.setForeground(Color.BLUE);
     //ing.setFont(new Font ("cooper black",Font.BOLD,15));
     
     try {
         
-        
+      
+    	
       Image imga = ImageIO.read(getClass().getResource("1.jpg"));
+        
       ingb.setIcon(new ImageIcon(imga));
       
+      ingb.addActionListener( new ActionListener(){
+		   public void actionPerformed(ActionEvent event) { 
+			   JOptionPane.showMessageDialog(null, "Hello world ese!", "English", JOptionPane.INFORMATION_MESSAGE);
+			   
+		   }
+			   	  });
+      
+      
       Image imga1 = ImageIO.read(getClass().getResource("2.jpg"));
+      
+      aleb.addActionListener( new ActionListener(){
+		   public void actionPerformed(ActionEvent event) { 
+			   JOptionPane.showMessageDialog(null, "Hallo Welt!", "deutsch", JOptionPane.INFORMATION_MESSAGE);
+			   
+		   }
+			   	  });
+     
       aleb.setIcon(new ImageIcon(imga1));
       
       Image imga2 = ImageIO.read(getClass().getResource("3.jpg"));
+      
+      rusb.addActionListener( new ActionListener(){
+		   public void actionPerformed(ActionEvent event) { 
+			   JOptionPane.showMessageDialog(null, "привет мир товарищ!", "русский", JOptionPane.INFORMATION_MESSAGE);
+			   
+		   }
+			   	  });
+      
       rusb.setIcon(new ImageIcon(imga2));
       
       Image imga3 = ImageIO.read(getClass().getResource("4.jpg"));
+      
+      japb.addActionListener( new ActionListener(){
+		   public void actionPerformed(ActionEvent event) { 
+			   JOptionPane.showMessageDialog(null, "こんにちは、先生!", "日本人", JOptionPane.INFORMATION_MESSAGE);
+			   
+		   }
+			   	  });
+     
       japb.setIcon(new ImageIcon(imga3));
       
       Image imga4 = ImageIO.read(getClass().getResource("5.jpg"));
+      
+      chib.addActionListener( new ActionListener(){
+		   public void actionPerformed(ActionEvent event) { 
+			   JOptionPane.showMessageDialog(null, "你好，世界同志!", "中国", JOptionPane.INFORMATION_MESSAGE);
+			   
+		   }
+			   	  });
+      
       chib.setIcon(new ImageIcon(imga4));
       
         } catch (Exception ex) {
-            System.out.println("hay error de carga");
+            System.out.println("hay error de carga en las imagenes");
     System.out.println(ex);
   }
     
@@ -132,7 +173,12 @@ class Hola_mundo extends JFrame{
 }
 public class ClasePrincipal  extends JFrame {
     
-  public static void main(String[] args) {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1522026861187284281L;
+
+public static void main(String[] args) {
      Hola_mundo metodo = new Hola_mundo();
       metodo.iniciarComponentes();
       
@@ -142,5 +188,4 @@ public class ClasePrincipal  extends JFrame {
   
 
   }
-
 
